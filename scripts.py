@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 
 def parse(pages, url):
-
     total_price = 0
     count = 0
 
@@ -22,10 +21,14 @@ def parse(pages, url):
 
 
 def get_avg_price(car, model, year):
-    url = f'https://aster.kz/cars/{car}/{model}?yearFrom={year}'
+    url = f'https://aster.kz/cars/{car}/{model}?yearFrom={year}&yearTo={year}'
     full_page = requests.get(url)
     soup = BeautifulSoup(full_page.content, 'html.parser')
     button_text = soup.find('a', class_='btn btn_primary').text.strip()
+    items = soup.findAll('span', itemprop='name')
+
+    if len(items) != 4:
+        return None
 
     if button_text == 'Показать 0 авто':
         return None
@@ -41,4 +44,4 @@ def get_avg_price(car, model, year):
 
 
 if __name__ == '__main__':
-    print(get_avg_price('audi', 'a4', '1993'))
+    print(get_avg_price('audi', 'a4', '2003'))
