@@ -44,4 +44,4 @@ def get_avg_price(car, model, year):
 
 
 if __name__ == '__main__':
-    print(get_avg_price('toyota', 'camry', '2003'))
+    print(get_avg_price('toyota', 'corolla', '2005'))
