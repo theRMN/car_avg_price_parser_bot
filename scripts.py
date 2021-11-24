@@ -17,7 +17,7 @@ def parse(pages, url):
             price = int(price.next_element.replace(' ', ''))
             total_price += price
 
-    return total_price / count
+    return total_price // count
 
 
 def get_avg_price(car, model, year):
@@ -40,8 +40,8 @@ def get_avg_price(car, model, year):
         pages = 2
         avg_price = parse(pages, url)
 
-    return round(avg_price, 2)
+    return avg_price
 
 
 if __name__ == '__main__':
-    print(get_avg_price('audi', 'a4', '2003'))
+    print(get_avg_price('toyota', 'camry', '2003'))
