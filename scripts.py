@@ -41,7 +41,3 @@ def get_avg_price(car, model, year):
         avg_price = parse(pages, url)
 
     return avg_price
-
-
-if __name__ == '__main__':
-    print(get_avg_price('toyota', 'corolla', '2005'))
