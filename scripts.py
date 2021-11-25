@@ -24,7 +24,7 @@ def get_avg_price(car, model, year):
     url = f'https://aster.kz/cars/{car}/{model}?yearFrom={year}&yearTo={year}'
     full_page = requests.get(url)
     soup = BeautifulSoup(full_page.content, 'html.parser')
-    button_text = soup.find('a', class_='btn btn_primary').text.strip()
+    button_text = soup.find('a', class_='btn btn_primary btn-show-ads').text.strip()
     items = soup.findAll('span', itemprop='name')
 
     if len(items) != 4:
